@@ -1,0 +1,44 @@
+<h1 class="equipment_title" style="text-align: center; margin-bottom: 50px; color: #fff;">Equipments</h1>
+<style>
+  body{
+    background: linear-gradient(90deg, rgba(22,3,115,1) 0%, rgba(159,8,121,1) 51%, rgba(0,116,255,1) 100%);
+  }
+</style>
+
+{{#if equips.length}}
+
+  <div class="carousel">
+    {{#each equips}}
+    <div class="carousel-item" >
+      <div class="card" style="position: relative; color: #fff; overflow: hidden;">
+        <div class="card-image">
+          <img src="{{image}}">
+        </div>
+        <div class="card-bottom" >
+            <div class="card-content">
+          <span class="card-title" style="font-weight: 500; font-size: 30px;">{{title}}</span>
+          <p style="font-weight: 700; font-size: 20px;" class="price">{{price}}</p>
+        </div>
+        <div class="card-action" style="display: flex;justify-content: space-between;align-items: center;">
+          <a href="/equip/{{_id}}" target="_blank">Show Equipment</a>
+     {{#if @root.isAuth}}
+           <a href="/equip/edit/{{_id}}">Edit Equipment</a> 
+            <form action="/card/add" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-primary">BUY</button>
+          </form>
+      {{/if}}
+        </div>
+        </div>
+      </div>
+      </div>
+      {{/each}}
+    
+  </div>
+
+  
+
+{{else}}
+<h1>This page is empty!!</h1>
+
+{{/if}}
